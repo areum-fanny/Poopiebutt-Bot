@@ -1,18 +1,26 @@
 const Discord = require('discord.js');
+const process = require('process');
 const client = new Discord.Client();
-
+const prefix = '!';
+require('dotenv').config();
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
-    console.log(msg);
-    if (msg.content === 'ping') {
-        msg.reply('pong');
-    }
-    else if(msg.content === "What's your name"){
-        msg.reply('Poooooopiebutt');
+    if (msg.author.bot) return;
+    if (!msg.content.startsWith(prefix)) return;
+    else {
+        console.log("Happening")
+        const channelId = msg.channel.id;
+        const commandBody = msg.content.slice(prefix.length);
+        const args = commandBody.split(" ");
+        const command = args.shift().toLowerCase();
+        if (command === 'play') {
+            msg.reply("Im ready to play")
+            return;
+        }
     }
 });
 
-client.login('MzczODcwOTY5MTQxNDYwOTk3.WfSweQ.bONHrwoFLS3xYboYz7Zt8-0ZWnk');
+client.login(process.env.TOKEN);
