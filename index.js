@@ -1,21 +1,15 @@
-const express = require('express')
-const path = require('path')
+/*const express = require('express')
+const app = express();
+//const path = require('path')*/
 const process = require('process');
-const PORT = process.env.PORT || 5000
-
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-const Discord = require('discord.js');
-
-const client = new Discord.Client();
-const prefix = '!';
 require('dotenv').config();
-client.on('ready', () => {
+//const PORT = process.env.PORT || 5000
+
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const prefix = '!';
+
+client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
@@ -36,3 +30,7 @@ client.on('message', msg => {
 });
 
 client.login(process.env.TOKEN);
+
+/*app.listen(PORT,() =>
+    console.log(`Exercise four is running in localhost:${PORT}`)
+);*/

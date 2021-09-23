@@ -11,11 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1"
   },
   "engines": {
-    "node": "14.x",
+    "node": "16.x",
     "npm": "6.x"
   }
 }
