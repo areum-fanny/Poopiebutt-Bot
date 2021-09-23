@@ -3,6 +3,7 @@ const app = express();
 //const path = require('path')*/
 const process = require('process');
 require('dotenv').config();
+const { token } = require('./config.json');
 //const PORT = process.env.PORT || 5000
 
 const { Client, Intents } = require('discord.js');
@@ -29,7 +30,7 @@ client.on('message', msg => {
     }
 });
 
-client.login(process.env.TOKEN);
+client.login(token);
 
 /*app.listen(PORT,() =>
     console.log(`Exercise four is running in localhost:${PORT}`)
